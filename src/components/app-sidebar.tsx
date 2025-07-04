@@ -27,22 +27,23 @@ const navigationItems = [
 ]
 
 export function AppSidebar() {
-  const { collapsed } = useSidebar()
+  const { state } = useSidebar()
   const location = useLocation()
   const { theme, setTheme } = useTheme()
   const [isSignedIn, setIsSignedIn] = useState(false)
   
   const currentPath = location.pathname
   const isActive = (path: string) => currentPath === path
+  const isCollapsed = state === "collapsed"
 
   return (
-    <Sidebar className={`${collapsed ? "w-14" : "w-64"} border-r bg-green-50 dark:bg-green-950`}>
+    <Sidebar className={`${isCollapsed ? "w-14" : "w-64"} border-r bg-green-50 dark:bg-green-950`}>
       <SidebarHeader className="p-4">
         <div className="flex items-center space-x-3">
           <div className="bg-green-500 p-2 rounded-lg">
             <Trophy className="h-6 w-6 text-white" />
           </div>
-          {!collapsed && (
+          {!isCollapsed && (
             <div>
               <h1 className="text-xl font-bold text-green-700 dark:text-green-300">Vakya</h1>
               <p className="text-sm text-green-600 dark:text-green-400">Debate Arena</p>
@@ -72,7 +73,7 @@ export function AppSidebar() {
                       }
                     >
                       <item.icon className="h-5 w-5" />
-                      {!collapsed && <span>{item.title}</span>}
+                      {!isCollapsed && <span>{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -91,7 +92,7 @@ export function AppSidebar() {
           className="w-full justify-start border-green-200 dark:border-green-800"
         >
           {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-          {!collapsed && (
+          {!isCollapsed && (
             <span className="ml-2">
               {theme === "light" ? "Dark Mode" : "Light Mode"}
             </span>
@@ -108,7 +109,7 @@ export function AppSidebar() {
           }`}
         >
           <User className="h-4 w-4" />
-          {!collapsed && (
+          {!isCollapsed && (
             <span className="ml-2">
               {isSignedIn ? "Sign Out" : "Sign In"}
             </span>
