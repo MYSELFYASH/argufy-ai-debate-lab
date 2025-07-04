@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, BookOpen, CheckCircle, Lock, Play, Trophy, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 const Learn = () => {
   const navigate = useNavigate();
@@ -79,24 +79,24 @@ const Learn = () => {
     >
       <Card className={`cursor-pointer transition-all duration-200 ${
         lesson.completed 
-          ? 'bg-green-500/10 border-green-500/30' 
-          : 'bg-white/5 border-white/10 hover:bg-white/10'
+          ? 'bg-green-100 dark:bg-green-900/30 border-green-300 dark:border-green-700' 
+          : 'bg-white dark:bg-green-950 border-green-200 dark:border-green-800 hover:shadow-lg'
       }`}>
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               {lesson.completed ? (
-                <CheckCircle className="h-5 w-5 text-green-400" />
+                <CheckCircle className="h-5 w-5 text-green-500" />
               ) : (
-                <Play className="h-5 w-5 text-white/60" />
+                <Play className="h-5 w-5 text-green-600 dark:text-green-400" />
               )}
               <div>
-                <h4 className="text-white font-medium">{lesson.title}</h4>
-                <p className="text-sm text-gray-400">{lesson.xp} XP</p>
+                <h4 className="text-green-800 dark:text-green-200 font-medium">{lesson.title}</h4>
+                <p className="text-sm text-green-600 dark:text-green-400">{lesson.xp} XP</p>
               </div>
             </div>
             {lesson.completed && (
-              <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
+              <Badge className="bg-green-500 text-white">
                 Complete
               </Badge>
             )}
@@ -109,19 +109,24 @@ const Learn = () => {
   if (selectedModule) {
     const module = modules.find(m => m.id === selectedModule);
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        <div className="container mx-auto px-4 py-8">
-          <div className="mb-6">
-            <Button 
-              onClick={() => setSelectedModule(null)}
-              variant="ghost" 
-              className="text-white hover:bg-white/10"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Modules
-            </Button>
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950 dark:to-blue-950">
+        <header className="border-b border-green-200 dark:border-green-800 bg-white/80 dark:bg-green-950/80 backdrop-blur-sm">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center space-x-3">
+              <SidebarTrigger />
+              <Button 
+                onClick={() => setSelectedModule(null)}
+                variant="ghost" 
+                className="text-green-700 dark:text-green-300 hover:bg-green-100 dark:hover:bg-green-900"
+              >
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Modules
+              </Button>
+            </div>
           </div>
+        </header>
 
+        <div className="container mx-auto px-4 py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -158,20 +163,13 @@ const Learn = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950 dark:to-blue-950">
       {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
+      <header className="border-b border-green-200 dark:border-green-800 bg-white/80 dark:bg-green-950/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Button 
-              onClick={() => navigate('/')}
-              variant="ghost" 
-              className="text-white hover:bg-white/10"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Dashboard
-            </Button>
-            <h1 className="text-2xl font-bold text-white">Learning Path</h1>
+          <div className="flex items-center space-x-3">
+            <SidebarTrigger />
+            <h1 className="text-2xl font-bold text-green-700 dark:text-green-300">Learning Path</h1>
           </div>
         </div>
       </header>
@@ -182,8 +180,8 @@ const Learn = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">Master the Art of Debate</h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-green-800 dark:text-green-200 mb-4">Master the Art of Debate</h2>
+          <p className="text-xl text-green-600 dark:text-green-400 max-w-2xl mx-auto">
             Progress through our carefully crafted modules to become a skilled debater
           </p>
         </motion.div>
@@ -201,8 +199,8 @@ const Learn = () => {
               <Card 
                 className={`h-full cursor-pointer transition-all duration-300 ${
                   module.unlocked 
-                    ? 'bg-white/5 border-white/10 hover:bg-white/10' 
-                    : 'bg-white/5 border-white/10 opacity-50'
+                    ? 'bg-white dark:bg-green-950 border-green-200 dark:border-green-800 hover:shadow-lg' 
+                    : 'bg-white dark:bg-green-950 border-green-200 dark:border-green-800 opacity-50'
                 }`}
                 onClick={() => module.unlocked && setSelectedModule(module.id)}
               >
@@ -216,21 +214,21 @@ const Learn = () => {
                       )}
                     </div>
                     {!module.unlocked && (
-                      <Badge variant="secondary" className="bg-gray-600">
+                      <Badge variant="secondary" className="bg-gray-200 text-gray-600">
                         Locked
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-white text-xl">{module.title}</CardTitle>
-                  <CardDescription className="text-gray-300">
+                  <CardTitle className="text-green-800 dark:text-green-200 text-xl">{module.title}</CardTitle>
+                  <CardDescription className="text-green-600 dark:text-green-400">
                     {module.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400">Progress</span>
-                      <span className="text-white font-medium">
+                      <span className="text-green-600 dark:text-green-400">Progress</span>
+                      <span className="text-green-800 dark:text-green-200 font-medium">
                         {module.completed}/{module.total}
                       </span>
                     </div>
@@ -239,7 +237,7 @@ const Learn = () => {
                       className="h-2"
                     />
                     {module.completed === module.total && (
-                      <div className="flex items-center space-x-2 text-green-400">
+                      <div className="flex items-center space-x-2 text-green-500">
                         <Star className="h-4 w-4" />
                         <span className="text-sm font-medium">Completed!</span>
                       </div>
