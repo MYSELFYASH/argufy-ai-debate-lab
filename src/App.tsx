@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,8 @@ import Learn from "./pages/Learn";
 import Debate from "./pages/Debate";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import { ChatAssistant } from "@/components/chat-assistant";
+import { AppFooter } from "@/components/app-footer";
 
 const queryClient = new QueryClient();
 
@@ -28,16 +29,20 @@ const App = () => (
               <AppHeader />
               <div className="flex flex-1 w-full relative">
                 <AppSidebar />
-                <main className="flex-1 transition-all duration-300 ease-in-out">
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/learn" element={<Learn />} />
-                    <Route path="/debate" element={<Debate />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
+                <main className="flex-1 transition-all duration-300 ease-in-out flex flex-col">
+                  <div className="flex-1">
+                    <Routes>
+                      <Route path="/" element={<Index />} />
+                      <Route path="/learn" element={<Learn />} />
+                      <Route path="/debate" element={<Debate />} />
+                      <Route path="/profile" element={<Profile />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </div>
+                  <AppFooter />
                 </main>
               </div>
+              <ChatAssistant />
             </div>
           </SidebarProvider>
         </BrowserRouter>

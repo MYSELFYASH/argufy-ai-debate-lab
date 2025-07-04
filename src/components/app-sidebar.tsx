@@ -26,12 +26,12 @@ export function AppSidebar() {
 
   return (
     <Sidebar 
-      className="border-r bg-white/95 dark:bg-gray-900/95 backdrop-blur-md group hover:w-64 transition-all duration-300 ease-in-out shadow-lg"
+      className="border-r bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
       collapsible="icon"
     >
       <SidebarContent className="pt-4">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-green-600 dark:text-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
+          <SidebarGroupLabel className="text-green-600 dark:text-green-400">
             Navigation
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -50,7 +50,7 @@ export function AppSidebar() {
                       }
                     >
                       <item.icon className="h-5 w-5 min-w-5" />
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 whitespace-nowrap">
+                      <span className="whitespace-nowrap">
                         {item.title}
                       </span>
                     </NavLink>
