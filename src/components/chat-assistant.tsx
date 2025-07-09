@@ -55,26 +55,60 @@ export function ChatAssistant() {
     setInputValue('')
     setIsLoading(true)
 
-    // Simulate API call to GPT-4
-    setTimeout(() => {
-      const responses = [
-        "That's a great question! Let me help you with that.",
-        "I understand what you're asking. Here's what I think...",
-        "Based on your question, I'd recommend the following approach:",
-        "That's an interesting point. Let me break it down for you:",
-        "I can definitely help you with that. Here's my suggestion:"
-      ]
-      
+    try {
+      // Real OpenAI API call
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer sk-svcacct-xWAWbkRImZNtREsm7AAudC2NPAkVllIFWZTFy2NidrZJ1TceuZpdCGKegEBBwST3BlbkFJaIZ0xNzL1PiMY05mv8u55Ejkt7HyJirbNU4MmbCLMwEuMnwjEuoktCU1Mick4A'
+        },
+        body: JSON.stringify({
+          model: 'gpt-4',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are Vakya AI, a helpful and knowledgeable assistant. Provide clear, concise, and helpful responses.'
+            },
+            ...messages.map(msg => ({
+              role: msg.sender === 'user' ? 'user' : 'assistant',
+              content: msg.content
+            })),
+            {
+              role: 'user',
+              content: inputValue
+            }
+          ],
+          max_tokens: 500,
+          temperature: 0.7
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to get response from OpenAI')
+      }
+
+      const data = await response.json()
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: responses[Math.floor(Math.random() * responses.length)],
+        content: data.choices[0].message.content,
         sender: 'assistant',
         timestamp: new Date()
       }
 
       setMessages(prev => [...prev, assistantMessage])
+    } catch (error) {
+      console.error('Error calling OpenAI API:', error)
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: 'Sorry, I encountered an error. Please try again.',
+        sender: 'assistant',
+        timestamp: new Date()
+      }
+      setMessages(prev => [...prev, errorMessage])
+    } finally {
       setIsLoading(false)
-    }, 1000)
+    }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

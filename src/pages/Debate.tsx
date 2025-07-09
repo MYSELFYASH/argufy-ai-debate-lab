@@ -20,6 +20,8 @@ const Debate = () => {
   const [currentSpeaker, setCurrentSpeaker] = useState('');
   const [transcript, setTranscript] = useState([]);
   const [notes, setNotes] = useState('');
+  const [userSpeech, setUserSpeech] = useState('');
+  const recognitionRef = useRef(null);
   
   // Setup state
   const [selectedFormat, setSelectedFormat] = useState('');
@@ -48,6 +50,38 @@ const Debate = () => {
       opposition: ['Leader of Opposition', 'Deputy Leader of Opposition', 'Opposition Whip']
     }
   };
+
+  // Initialize speech recognition
+  useEffect(() => {
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = true;
+      recognitionRef.current.interimResults = true;
+      recognitionRef.current.lang = 'en-US';
+
+      recognitionRef.current.onresult = (event) => {
+        let finalTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript;
+          }
+        }
+        if (finalTranscript) {
+          setUserSpeech(prev => prev + ' ' + finalTranscript);
+        }
+      };
+
+      recognitionRef.current.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        toast({
+          title: "Speech Recognition Error",
+          description: "Please check your microphone and try again.",
+          variant: "destructive"
+        });
+      };
+    }
+  }, []);
 
   // Timer effect
   useEffect(() => {
@@ -107,29 +141,77 @@ const Debate = () => {
     }, 2000);
   };
 
-  const simulateAIResponse = () => {
-    const aiResponse = {
-      speaker: 'AI Opponent',
-      content: `Thank you for your opening arguments. I'd like to address several key points you've raised. 
+  const simulateAIResponse = async () => {
+    try {
+      // Get user's speech from transcript or notes for context
+      const userArguments = transcript.filter(t => t.speaker === 'You').map(t => t.content).join(' ') || notes;
+      
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer sk-svcacct-xWAWbkRImZNtREsm7AAudC2NPAkVllIFWZTFy2NidrZJ1TceuZpdCGKegEBBwST3BlbkFJaIZ0xNzL1PiMY05mv8u55Ejkt7HyJirbNU4MmbCLMwEuMnwjEuoktCU1Mick4A'
+        },
+        body: JSON.stringify({
+          model: 'gpt-4',
+          messages: [
+            {
+              role: 'system',
+              content: `You are an AI debate opponent in a ${selectedFormat} debate. The motion is: "${selectedMotion}". You are arguing for the ${selectedSide === 'government' ? 'opposition' : 'government'} side. Your difficulty level is ${aiDifficulty}. Provide a structured, compelling counter-argument to the user's points. Keep your response to about 300-400 words as this is a timed debate speech.`
+            },
+            {
+              role: 'user',
+              content: `The user has argued: ${userArguments || 'Please provide your opening statement for the ' + selectedSide + ' side.'}`
+            }
+          ],
+          max_tokens: 600,
+          temperature: 0.8
+        })
+      });
 
-First, regarding your claim about social media's positive impact on connectivity, I must respectfully disagree. While social media platforms do connect people across distances, the quality of these connections is often superficial at best.
+      if (!response.ok) {
+        throw new Error('Failed to get AI response');
+      }
 
-Consider the mental health implications: Studies consistently show correlation between heavy social media use and increased rates of anxiety and depression, particularly among young people. The constant comparison culture fostered by these platforms creates unrealistic expectations and damages self-esteem.
-
-Furthermore, the spread of misinformation through social media has had devastating real-world consequences, from public health crises to political instability. The algorithms that govern these platforms prioritize engagement over accuracy, creating echo chambers that polarize society.
-
-I'll now address your economic arguments...`,
-      timestamp: new Date().toLocaleTimeString(),
-      duration: '7:32'
-    };
-    
-    setTranscript(prev => [...prev, aiResponse]);
-    
-    // After AI speech, transition to analysis
-    setTimeout(() => {
-      setDebateState('analysis');
-      generateAnalysis();
-    }, 3000);
+      const data = await response.json();
+      const aiResponse = {
+        speaker: 'AI Opponent',
+        content: data.choices[0].message.content,
+        timestamp: new Date().toLocaleTimeString(),
+        duration: '7:32'
+      };
+      
+      setTranscript(prev => [...prev, aiResponse]);
+      
+      // Use speech synthesis to read AI response
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(aiResponse.content);
+        utterance.rate = 0.9;
+        utterance.pitch = 1.1;
+        utterance.volume = 0.8;
+        speechSynthesis.speak(utterance);
+      }
+      
+      // After AI speech, transition to analysis
+      setTimeout(() => {
+        setDebateState('analysis');
+        generateAnalysis();
+      }, 8000);
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      const fallbackResponse = {
+        speaker: 'AI Opponent',
+        content: 'I apologize, but I encountered a technical issue. Let me provide a brief counter-argument: Your points are interesting, but I believe there are several counterpoints worth considering...',
+        timestamp: new Date().toLocaleTimeString(),
+        duration: '2:00'
+      };
+      setTranscript(prev => [...prev, fallbackResponse]);
+      
+      setTimeout(() => {
+        setDebateState('analysis');
+        generateAnalysis();
+      }, 3000);
+    }
   };
 
   const generateAnalysis = () => {
@@ -141,15 +223,30 @@ I'll now address your economic arguments...`,
 
   const toggleRecording = () => {
     setIsRecording(!isRecording);
-    if (!isRecording) {
+    if (!isRecording && recognitionRef.current) {
+      // Start recording
+      recognitionRef.current.start();
       toast({
         title: "Recording Started",
         description: "Speak clearly into your microphone.",
       });
-    } else {
+    } else if (recognitionRef.current) {
+      // Stop recording
+      recognitionRef.current.stop();
+      if (userSpeech) {
+        // Add user speech to transcript
+        const userEntry = {
+          speaker: 'You',
+          content: userSpeech,
+          timestamp: new Date().toLocaleTimeString(),
+          duration: formatTime(8 * 60 - timeLeft)
+        };
+        setTranscript(prev => [...prev, userEntry]);
+        setUserSpeech('');
+      }
       toast({
-        title: "Recording Paused",
-        description: "Click again to resume recording.",
+        title: "Recording Stopped",
+        description: "Your speech has been captured.",
       });
     }
   };
