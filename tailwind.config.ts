@@ -42,7 +42,11 @@ export default {
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					foreground: 'hsl(var(--accent-foreground))',
+					gold: 'hsl(43 96% 56%)',
+					emerald: 'hsl(160 84% 39%)',
+					sapphire: 'hsl(217 91% 60%)',
+					ruby: 'hsl(0 84% 60%)'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',

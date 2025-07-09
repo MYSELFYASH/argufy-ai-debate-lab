@@ -119,19 +119,22 @@ export function ChatAssistant() {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
-      <Card className={`w-80 shadow-xl transition-all duration-300 ${isMinimized ? 'h-16' : 'h-96'}`}>
-        <CardHeader className="flex flex-row items-center justify-between p-4 pb-2">
-          <CardTitle className="text-lg flex items-center space-x-2">
-            <Bot className="h-5 w-5 text-green-600" />
-            <span>AI Assistant</span>
-            <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">GPT-4</span>
+    <div className="fixed bottom-6 right-6 z-50 animate-bounce-in">
+      <Card className={`w-80 shadow-2xl card-professional transition-all duration-500 hover-glow ${isMinimized ? 'h-16' : 'h-96'} border-primary/20`}>
+        <CardHeader className="flex flex-row items-center justify-between p-4 pb-2 bg-gradient-to-r from-primary/5 to-accent-emerald/5">
+          <CardTitle className="text-lg flex items-center space-x-3">
+            <div className="relative">
+              <Bot className="h-6 w-6 text-primary animate-pulse" />
+              <div className="absolute -top-1 -right-1 h-3 w-3 bg-accent-emerald rounded-full animate-ping"></div>
+            </div>
+            <span className="bg-gradient-to-r from-primary to-accent-emerald bg-clip-text text-transparent font-bold">Vakya AI</span>
+            <span className="text-xs bg-gradient-to-r from-accent-sapphire to-accent-emerald text-white px-3 py-1 rounded-full font-medium animate-glow-pulse">GPT-4</span>
           </CardTitle>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setIsMinimized(!isMinimized)}
-            className="h-8 w-8"
+            className="h-8 w-8 hover-bounce rounded-full"
           >
             {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
           </Button>
@@ -194,14 +197,15 @@ export function ChatAssistant() {
                 className="flex-1"
                 disabled={isLoading}
               />
-              <Button
-                onClick={sendMessage}
-                disabled={isLoading || !inputValue.trim()}
-                size="icon"
-                className="bg-green-500 hover:bg-green-600"
-              >
-                <Send className="h-4 w-4" />
-              </Button>
+                <Button
+                  onClick={sendMessage}
+                  disabled={isLoading || !inputValue.trim()}
+                  size="icon"
+                  variant="gaming"
+                  className="hover-bounce animate-glow-pulse"
+                >
+                  <Send className="h-4 w-4" />
+                </Button>
             </div>
           </CardContent>
         )}

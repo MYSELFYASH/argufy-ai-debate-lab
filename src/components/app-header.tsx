@@ -43,19 +43,19 @@ export function AppHeader() {
   const [isSignedIn, setIsSignedIn] = useState(false)
 
   return (
-    <header className="h-16 border-b border-green-200/50 dark:border-green-800/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-50">
+    <header className="h-16 border-b border-border bg-background/95 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-50 animate-slide-up">
       <div className="flex items-center space-x-4">
-        <SidebarTrigger className="p-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-900 transition-all duration-200 hover:scale-105" />
+        <SidebarTrigger className="p-2 rounded-xl hover-lift hover-glow transition-all duration-300" />
         
-        <div className="flex items-center space-x-3">
-          <div className="bg-gradient-to-br from-blue-500 via-green-500 to-yellow-500 p-2.5 rounded-xl shadow-lg">
+        <div className="flex items-center space-x-3 animate-bounce-in">
+          <div className="bg-gradient-to-br from-blue-500 via-green-500 to-yellow-500 p-2.5 rounded-xl shadow-lg hover-bounce animate-sparkle">
             <GeminiIcon className="h-6 w-6 text-white" />
           </div>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 dark:from-green-400 dark:to-green-500 bg-clip-text text-transparent">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent-emerald bg-clip-text text-transparent">
             Vakya
           </h1>
-          <span className="text-xs bg-gradient-to-r from-purple-600 to-blue-600 text-white px-2 py-1 rounded-full font-medium">
-            Powered by GPT-4
+          <span className="text-xs bg-gradient-to-r from-accent-sapphire to-accent-emerald text-white px-3 py-1.5 rounded-full font-medium shadow-lg animate-glow-pulse">
+            AI Powered
           </span>
         </div>
       </div>
@@ -65,68 +65,78 @@ export function AppHeader() {
           variant="ghost"
           size="icon"
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          className="rounded-full hover:bg-green-100 dark:hover:bg-green-900 transition-all duration-200 hover:scale-105"
+          className="rounded-full hover-scale hover-glow"
         >
           {theme === "light" ? 
-            <Moon className="h-5 w-5 text-green-600 dark:text-green-400" /> : 
-            <Sun className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <Moon className="h-5 w-5 text-primary animate-spin" style={{ animationDuration: '3s' }} /> : 
+            <Sun className="h-5 w-5 text-accent-gold animate-pulse" />
           }
         </Button>
 
         {isSignedIn ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8">
+              <Button variant="ghost" className="relative h-10 w-10 rounded-full hover-lift">
+                <Avatar className="h-10 w-10 ring-2 ring-primary/20">
                   <AvatarImage src="/placeholder.svg" alt="@user" />
-                  <AvatarFallback className="bg-green-500 text-white">U</AvatarFallback>
+                  <AvatarFallback className="bg-gradient-to-br from-primary to-accent-emerald text-white font-bold">JD</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
-              <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">John Doe</p>
-                  <p className="text-xs leading-none text-muted-foreground">
+            <DropdownMenuContent className="w-60 animate-slide-up card-professional" align="end" forceMount>
+              <DropdownMenuLabel className="font-normal p-4">
+                <div className="flex flex-col space-y-2">
+                  <div className="flex items-center space-x-3">
+                    <Avatar className="h-10 w-10">
+                      <AvatarFallback className="bg-gradient-to-br from-primary to-accent-emerald text-white">JD</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-semibold leading-none">John Doe</p>
+                      <p className="text-xs leading-none text-muted-foreground mt-1">
+                        Premium Member
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-xs text-muted-foreground">
                     john.doe@example.com
-                  </p>
+                  </div>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+              <DropdownMenuItem className="hover-lift cursor-pointer">
+                <User className="mr-3 h-4 w-4 text-accent-emerald" />
+                <span>Profile & Stats</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
+              <DropdownMenuItem className="hover-lift cursor-pointer">
+                <Settings className="mr-3 h-4 w-4 text-accent-sapphire" />
+                <span>Account Settings</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell className="mr-2 h-4 w-4" />
+              <DropdownMenuItem className="hover-lift cursor-pointer">
+                <Bell className="mr-3 h-4 w-4 text-accent-gold" />
                 <span>Notifications</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Shield className="mr-2 h-4 w-4" />
-                <span>Privacy</span>
+              <DropdownMenuItem className="hover-lift cursor-pointer">
+                <Shield className="mr-3 h-4 w-4 text-accent-ruby" />
+                <span>Privacy & Security</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <HelpCircle className="mr-2 h-4 w-4" />
+              <DropdownMenuItem className="hover-lift cursor-pointer">
+                <HelpCircle className="mr-3 h-4 w-4 text-primary" />
                 <span>Help & Support</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => setIsSignedIn(false)}>
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Log out</span>
+              <DropdownMenuItem onClick={() => setIsSignedIn(false)} className="hover-lift cursor-pointer text-destructive">
+                <LogOut className="mr-3 h-4 w-4" />
+                <span>Sign Out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
           <Button
             onClick={() => setIsSignedIn(!isSignedIn)}
-            className="rounded-full transition-all duration-200 hover:scale-105 shadow-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white"
+            className="btn-gaming hover-lift hover-glow px-6 py-2 rounded-full font-semibold shadow-lg"
           >
             <User className="h-4 w-4 mr-2" />
-            Sign In
+            Get Started
           </Button>
         )}
       </div>

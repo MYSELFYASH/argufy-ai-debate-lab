@@ -26,39 +26,62 @@ export function AppSidebar() {
 
   return (
     <Sidebar 
-      className="border-r bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
+      className="border-r border-border/50 bg-sidebar-background/95 backdrop-blur-md shadow-xl animate-slide-up"
       collapsible="icon"
     >
-      <SidebarContent className="pt-4">
+      <SidebarContent className="pt-6">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-green-600 dark:text-green-400">
-            Navigation
+          <SidebarGroupLabel className="text-primary font-semibold text-sm mb-4 px-4">
+            🚀 Navigation
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {navigationItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
+            <SidebarMenu className="space-y-2">
+              {navigationItems.map((item, index) => (
+                <SidebarMenuItem key={item.title} className="animate-bounce-in" style={{ animationDelay: `${index * 0.1}s` }}>
                   <SidebarMenuButton asChild>
                     <NavLink 
                       to={item.url} 
                       className={({ isActive }) => 
-                        `flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 mx-2 my-1 ${
+                        `group flex items-center space-x-4 px-4 py-3.5 rounded-xl transition-all duration-300 mx-2 hover-lift relative overflow-hidden ${
                           isActive 
-                            ? "bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg transform scale-105" 
-                            : "hover:bg-green-100 dark:hover:bg-green-900 text-green-700 dark:text-green-300 hover:scale-105 hover:shadow-md"
+                            ? "bg-gradient-to-r from-primary to-accent-emerald text-white shadow-lg animate-glow-pulse" 
+                            : "hover:bg-sidebar-accent text-sidebar-foreground hover:text-sidebar-accent-foreground hover:shadow-md"
                         }`
                       }
                     >
-                      <item.icon className="h-5 w-5 min-w-5" />
-                      <span className="whitespace-nowrap">
+                      <item.icon className={`h-5 w-5 min-w-5 transition-transform duration-300 group-hover:scale-110 ${
+                        item.title === 'Home' && '🏠' ||
+                        item.title === 'Learn' && '📚' ||
+                        item.title === 'Debate' && '🎤' ||
+                        item.title === 'Profile' && '👤'
+                      }`} />
+                      <span className="whitespace-nowrap font-medium tracking-wide">
                         {item.title}
                       </span>
+                      {/* Hover accent */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform -skew-x-12"></div>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
+        </SidebarGroup>
+        
+        {/* Professional separator */}
+        <div className="mt-8 mx-4 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+        
+        {/* Achievement section for gamification */}
+        <SidebarGroup className="mt-6">
+          <SidebarGroupLabel className="text-accent-gold font-semibold text-sm mb-3 px-4 flex items-center">
+            🏆 Achievements
+          </SidebarGroupLabel>
+          <div className="px-4 py-2">
+            <div className="bg-gradient-to-r from-accent-gold/10 to-accent-emerald/10 rounded-lg p-3 animate-sparkle">
+              <div className="text-xs text-muted-foreground">Daily Streak</div>
+              <div className="text-lg font-bold text-accent-gold">7 Days 🔥</div>
+            </div>
+          </div>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
