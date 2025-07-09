@@ -18,7 +18,7 @@ export function ChatAssistant() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: "Hello! I'm your AI assistant powered by GPT-4. How can I help you today?",
+      content: "Hey there, superstar! 🌟 I'm Vakya AI, your debate buddy! Ready to become a debating champion? Let's make learning fun and exciting! 🚀✨",
       sender: 'assistant',
       timestamp: new Date()
     }
@@ -68,7 +68,7 @@ export function ChatAssistant() {
           messages: [
             {
               role: 'system',
-              content: 'You are Vakya AI, a helpful and knowledgeable assistant. Provide clear, concise, and helpful responses.'
+              content: 'You are Vakya AI, a fun, energetic, and motivating AI assistant similar to Duolingo\'s Duo. You help users learn debating skills with enthusiasm and encouragement. Use emojis, be supportive, celebrate achievements, and make learning fun! Keep responses encouraging and bite-sized.'
             },
             ...messages.map(msg => ({
               role: msg.sender === 'user' ? 'user' : 'assistant',
@@ -124,7 +124,7 @@ export function ChatAssistant() {
         <CardHeader className="flex flex-row items-center justify-between p-4 pb-2 bg-gradient-to-r from-primary/5 to-accent-emerald/5">
           <CardTitle className="text-lg flex items-center space-x-3">
             <div className="relative">
-              <Bot className="h-6 w-6 text-primary animate-pulse" />
+              <div className="text-2xl animate-bounce">🤖</div>
               <div className="absolute -top-1 -right-1 h-3 w-3 bg-accent-emerald rounded-full animate-ping"></div>
             </div>
             <span className="bg-gradient-to-r from-primary to-accent-emerald bg-clip-text text-transparent font-bold">Vakya AI</span>

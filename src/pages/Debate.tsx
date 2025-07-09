@@ -254,19 +254,19 @@ const Debate = () => {
   // Setup Screen
   if (debateState === 'setup') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        <header className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+        <header className="border-b border-border bg-card/80 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <Button 
                 onClick={() => navigate('/')}
                 variant="ghost" 
-                className="text-white hover:bg-white/10"
+                className="text-foreground hover:bg-accent"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Dashboard
               </Button>
-              <h1 className="text-2xl font-bold text-white">Debate Setup</h1>
+              <h1 className="text-2xl font-bold text-foreground">Debate Setup</h1>
             </div>
           </div>
         </header>
@@ -277,10 +277,10 @@ const Debate = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-2xl mx-auto"
           >
-            <Card className="bg-white/5 border-white/10">
+            <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="text-white text-2xl">Configure Your Debate</CardTitle>
-                <CardDescription className="text-gray-300">
+                <CardTitle className="text-foreground text-2xl">Configure Your Debate</CardTitle>
+                <CardDescription className="text-muted-foreground">
                   Set up your debate parameters before facing the AI opponent
                 </CardDescription>
               </CardHeader>

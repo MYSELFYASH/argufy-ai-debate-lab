@@ -71,15 +71,17 @@ export function AppSidebar() {
         {/* Professional separator */}
         <div className="mt-8 mx-4 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
         
-        {/* Achievement section for gamification */}
+        {/* Motivational section */}
         <SidebarGroup className="mt-6">
-          <SidebarGroupLabel className="text-accent-gold font-semibold text-sm mb-3 px-4 flex items-center">
-            🏆 Achievements
+          <SidebarGroupLabel className="text-primary font-semibold text-sm mb-3 px-4 flex items-center">
+            💡 Daily Motivation
           </SidebarGroupLabel>
           <div className="px-4 py-2">
-            <div className="bg-gradient-to-r from-accent-gold/10 to-accent-emerald/10 rounded-lg p-3 animate-sparkle">
-              <div className="text-xs text-muted-foreground">Daily Streak</div>
-              <div className="text-lg font-bold text-accent-gold">7 Days 🔥</div>
+            <div className="bg-gradient-to-r from-primary/10 to-accent-emerald/10 rounded-lg p-3 border border-primary/20">
+              <div className="text-sm text-foreground font-medium mb-1">
+                "Success is not final, failure is not fatal: it is the courage to continue that counts."
+              </div>
+              <div className="text-xs text-muted-foreground">- Winston Churchill</div>
             </div>
           </div>
         </SidebarGroup>
