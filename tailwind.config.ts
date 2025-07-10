@@ -18,21 +18,6 @@ export default {
 			}
 		},
 		extend: {
-			fontFamily: {
-				'inter': ['Inter', 'system-ui', 'sans-serif'],
-				'reading': ['Merriweather', 'Georgia', 'serif'],
-			},
-			fontSize: {
-				'xs': ['0.75rem', { lineHeight: '1.5' }],
-				'sm': ['0.875rem', { lineHeight: '1.5' }],
-				'base': ['1rem', { lineHeight: '1.6' }],
-				'lg': ['1.125rem', { lineHeight: '1.6' }],
-				'xl': ['1.25rem', { lineHeight: '1.6' }],
-				'2xl': ['1.5rem', { lineHeight: '1.5' }],
-				'3xl': ['1.875rem', { lineHeight: '1.4' }],
-				'4xl': ['2.25rem', { lineHeight: '1.3' }],
-				'5xl': ['3rem', { lineHeight: '1.2' }],
-			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -57,7 +42,11 @@ export default {
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					foreground: 'hsl(var(--accent-foreground))',
+					gold: 'hsl(43 96% 56%)',
+					emerald: 'hsl(160 84% 39%)',
+					sapphire: 'hsl(217 91% 60%)',
+					ruby: 'hsl(0 84% 60%)'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -76,22 +65,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				// Study-specific colors
-				study: {
-					blue: 'hsl(var(--study-blue))',
-					green: 'hsl(var(--study-green))',
-					orange: 'hsl(var(--study-orange))',
-					purple: 'hsl(var(--study-purple))'
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
-			},
-			spacing: {
-				'safe': '44px', // Minimum touch target
 			},
 			keyframes: {
 				'accordion-down': {

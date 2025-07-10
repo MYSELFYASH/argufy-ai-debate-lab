@@ -6,106 +6,109 @@ import { Link } from "react-router-dom"
 
 const Index = () => {
   return (
-    <div className="min-h-screen font-inter">
-      {/* Hero Section - Clean and Approachable */}
-      <div className="bg-gradient-to-br from-primary/10 via-study-blue/5 to-study-green/10 text-foreground">
-        <div className="max-w-6xl mx-auto px-6 py-16 text-center">
-          <div className="animate-gentle-fade">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-reading">
-              Learn to 
-              <span className="block text-primary mt-2">
-                Debate Better
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-green-400 via-green-500 to-blue-500 text-white">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative max-w-7xl mx-auto px-6 py-24 text-center">
+          <div className="animate-fade-in">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Master the Art of
+              <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                Debate
               </span>
             </h1>
-            <p className="text-lg md:text-xl mb-8 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Simple, step-by-step lessons to help you speak confidently and think clearly. Perfect for students, professionals, and anyone who wants to improve.
+            <p className="text-xl md:text-2xl mb-8 text-green-50 max-w-3xl mx-auto leading-relaxed">
+              Sharpen your argumentation skills, engage in thoughtful discussions, and become a confident communicator.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
-              <Button asChild size="lg" className="w-full sm:w-auto big-touch-target text-lg px-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="bg-white text-green-600 hover:bg-green-50 font-semibold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                 <Link to="/learn">Start Learning</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto big-touch-target text-lg px-8">
-                <Link to="/debate">Try Practice</Link>
+              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 font-semibold px-8 py-4 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105">
+                <Link to="/debate">Join Debate</Link>
               </Button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Simple Features Section */}
-      <div className="py-16 bg-background">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-reading">
-              Why Learn with Vakya?
+      {/* Features Section */}
+      <div className="py-24 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Why Choose Vakya?
             </h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              We make learning debate skills easy, fun, and effective for everyone.
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Everything you need to become an exceptional debater and communicator.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: BookOpen,
-                title: "Easy Lessons",
-                description: "Step-by-step modules that anyone can follow, from beginners to advanced learners."
+                title: "Interactive Learning",
+                description: "Master debate techniques through engaging, bite-sized lessons designed for all skill levels."
               },
               {
                 icon: Mic,
-                title: "Practice Speaking",
-                description: "Practice debates with our AI assistant in a safe, supportive environment."
+                title: "Live Debates",
+                description: "Practice with AI opponents and real people to hone your skills in real-time discussions."
               },
               {
                 icon: Trophy,
                 title: "Track Progress",
-                description: "See how you improve with clear progress tracking and helpful feedback."
+                description: "Monitor your improvement with detailed analytics and achievement badges."
               },
               {
                 icon: Users,
-                title: "Learn Together",
-                description: "Join a community of learners and practice with people at your level."
+                title: "Community",
+                description: "Connect with fellow debaters and learn from a supportive global community."
               },
               {
                 icon: Zap,
-                title: "Smart Help",
-                description: "Get personalized tips and suggestions to improve faster."
+                title: "AI-Powered",
+                description: "Get personalized feedback and suggestions powered by advanced AI technology."
               },
               {
                 icon: Target,
-                title: "Build Skills",
-                description: "Develop thinking, speaking, and reasoning skills for school and work."
+                title: "Skill Building",
+                description: "Develop critical thinking, logical reasoning, and persuasive communication skills."
               }
             ].map((feature, index) => (
-              <div key={index} className="study-card hover-gentle animate-smooth-slide" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="text-center">
-                  <div className="mx-auto w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                    <feature.icon className="h-7 w-7 text-primary" />
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white to-green-50 dark:from-gray-800 dark:to-green-950">
+                <CardHeader className="text-center pb-4">
+                  <div className="mx-auto w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                    <feature.icon className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 font-reading">
+                  <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">
                     {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600 dark:text-gray-400 text-center leading-relaxed">
                     {feature.description}
-                  </p>
-                </div>
-              </div>
+                  </CardDescription>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Simple Call to Action */}
-      <div className="py-16 bg-primary/5">
+      {/* CTA Section */}
+      <div className="py-24 bg-gradient-to-r from-green-500 to-blue-500 text-white">
         <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-reading">
-            Ready to Start?
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Begin Your Journey?
           </h2>
-          <p className="text-lg mb-8 text-muted-foreground">
-            Join thousands of learners improving their debate and speaking skills.
+          <p className="text-xl mb-8 text-green-50">
+            Join thousands of learners who are already mastering the art of debate.
           </p>
-          <Button asChild size="lg" className="big-touch-target text-lg px-12">
-            <Link to="/learn">Begin Your Journey</Link>
+          <Button asChild size="lg" className="bg-white text-green-600 hover:bg-green-50 font-semibold px-12 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <Link to="/learn">Get Started Today</Link>
           </Button>
         </div>
       </div>

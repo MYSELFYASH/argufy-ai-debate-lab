@@ -9,99 +9,83 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Study-focused color scheme - Light Mode */
-    --background: 248 250 252%;  /* Soft white */
-    --foreground: 15 23 42%;     /* Dark slate for text */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-    --card: 255 255 255%;        /* Pure white cards */
-    --card-foreground: 15 23 42%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 255 255 255%;
-    --popover-foreground: 15 23 42%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    /* Primary: Academic blue - trustworthy and focused */
-    --primary: 219 78% 58%;      /* Blue for learning */
-    --primary-foreground: 255 255 255%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Soft study blue */
-    --secondary: 239 246 255%;   /* Very light blue */
-    --secondary-foreground: 30 41 59%;
+    --secondary: 142 20% 96%;
+    --secondary-foreground: 142 71% 25%;
 
-    /* Muted: Light academic gray */
-    --muted: 241 245 249%;       /* Light gray background */
-    --muted-foreground: 100 116 139%;
+    --muted: 142 20% 96%;
+    --muted-foreground: 142 30% 50%;
 
-    /* Accent: Study green for success */
-    --accent: 34 197 94%;        /* Success green */
-    --accent-foreground: 255 255 255%;
+    --accent: 142 20% 96%;
+    --accent-foreground: 142 71% 25%;
 
-    /* Destructive: Warning red */
-    --destructive: 239 68% 68%;
-    --destructive-foreground: 255 255 255%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    /* Borders and inputs */
-    --border: 226 232 240%;      /* Light border */
-    --input: 226 232 240%;
-    --ring: 219 78% 58%;         /* Focus ring matches primary */
+    --border: 142 20% 85%;
+    --input: 142 20% 85%;
+    --ring: 142 71% 45%;
 
-    --radius: 8px;               /* Friendly rounded corners */
+    --radius: 0.5rem;
 
-    /* Sidebar colors */
-    --sidebar-background: 248 250 252%;
-    --sidebar-foreground: 51 65 85%;
-    --sidebar-primary: 219 78% 58%;
-    --sidebar-primary-foreground: 255 255 255%;
-    --sidebar-accent: 239 246 255%;
-    --sidebar-accent-foreground: 30 41 59%;
-    --sidebar-border: 226 232 240%;
-    --sidebar-ring: 219 78% 58%;
+    --sidebar-background: 142 20% 98%;
+    --sidebar-foreground: 142 30% 20%;
+    --sidebar-primary: 142 71% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 142 20% 92%;
+    --sidebar-accent-foreground: 142 71% 15%;
+    --sidebar-border: 142 20% 85%;
+    --sidebar-ring: 142 71% 45%;
   }
 
   .dark {
-    /* Study-focused dark mode - easier on eyes for night study */
-    --background: 15 23 42%;     /* Dark slate background */
-    --foreground: 248 250 252%;  /* Light text */
+    --background: 142 50% 3%;
+    --foreground: 142 20% 95%;
 
-    --card: 30 41 59%;           /* Darker cards */
-    --card-foreground: 248 250 252%;
+    --card: 142 40% 5%;
+    --card-foreground: 142 20% 95%;
 
-    --popover: 30 41 59%;
-    --popover-foreground: 248 250 252%;
+    --popover: 142 40% 5%;
+    --popover-foreground: 142 20% 95%;
 
-    /* Primary: Softer blue for dark mode */
-    --primary: 147 197 253%;     /* Light blue */
-    --primary-foreground: 15 23 42%;
+    --primary: 142 71% 55%;
+    --primary-foreground: 142 50% 3%;
 
-    /* Secondary: Dark study surface */
-    --secondary: 51 65 85%;      /* Medium slate */
-    --secondary-foreground: 248 250 252%;
+    --secondary: 142 30% 10%;
+    --secondary-foreground: 142 20% 95%;
 
-    /* Muted: Dark muted surfaces */
-    --muted: 51 65 85%;
-    --muted-foreground: 148 163 184%;
+    --muted: 142 30% 10%;
+    --muted-foreground: 142 20% 60%;
 
-    /* Accent: Soft green for dark mode */
-    --accent: 34 197 94%;
-    --accent-foreground: 15 23 42%;
+    --accent: 142 30% 10%;
+    --accent-foreground: 142 20% 95%;
 
-    /* Destructive */
-    --destructive: 248 113 113%;
-    --destructive-foreground: 15 23 42%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    /* Borders */
-    --border: 51 65 85%;
-    --input: 51 65 85%;
-    --ring: 147 197 253%;
+    --border: 142 30% 15%;
+    --input: 142 30% 15%;
+    --ring: 142 71% 55%;
 
-    /* Sidebar dark */
-    --sidebar-background: 30 41 59%;
-    --sidebar-foreground: 203 213 225%;
-    --sidebar-primary: 147 197 253%;
-    --sidebar-primary-foreground: 15 23 42%;
-    --sidebar-accent: 51 65 85%;
-    --sidebar-accent-foreground: 203 213 225%;
-    --sidebar-border: 51 65 85%;
-    --sidebar-ring: 147 197 253%;
+    --sidebar-background: 142 40% 5%;
+    --sidebar-foreground: 142 20% 85%;
+    --sidebar-primary: 142 71% 55%;
+    --sidebar-primary-foreground: 142 50% 3%;
+    --sidebar-accent: 142 30% 10%;
+    --sidebar-accent-foreground: 142 20% 85%;
+    --sidebar-border: 142 30% 15%;
+    --sidebar-ring: 142 71% 55%;
   }
 }
 
@@ -111,75 +95,207 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
-    font-size: 16px; /* Base readable size for all ages */
-    line-height: 1.6; /* Better readability */
+    @apply bg-background text-foreground;
   }
 }
 
-/* Study-focused design system */
+/* Enhanced Design System - Investor-Grade Aesthetics */
 :root {
-  /* Academic color palette */
-  --study-blue: 219 78% 58%;     /* Primary learning blue */
-  --study-green: 34 197 94%;     /* Success/progress green */
-  --study-orange: 251 146 60%;   /* Warning/attention orange */
-  --study-purple: 139 92% 62%;   /* Creative/advanced purple */
+  /* Gamified accent colors */
+  --accent-gold: 43 96% 56%;
+  --accent-emerald: 160 84% 39%;
+  --accent-sapphire: 217 91% 60%;
+  --accent-ruby: 0 84% 60%;
   
-  /* Gentle shadows for comfort */
-  --shadow-soft: 0 1px 3px 0 hsl(0 0% 0% / 0.1);
-  --shadow-medium: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-  --shadow-large: 0 10px 15px -3px hsl(0 0% 0% / 0.1);
+  /* Gradient definitions */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-emerald)));
+  --gradient-gold: linear-gradient(135deg, hsl(var(--accent-gold)), hsl(43 100% 70%));
+  --gradient-gaming: linear-gradient(135deg, hsl(var(--accent-sapphire)), hsl(var(--accent-emerald)));
+  
+  /* Professional shadows */
+  --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+  --shadow-glow: 0 0 40px hsl(var(--accent-emerald) / 0.15);
+  --shadow-professional: 0 4px 20px -2px hsl(var(--foreground) / 0.1);
+  
+  /* Animation timing */
+  --transition-butter: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Simple, accessible animations */
-@keyframes gentle-fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes smooth-slide {
-  from { 
+/* Professional micro-animations */
+@keyframes fade-in {
+  from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(20px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Animation classes for accessibility */
-.animate-gentle-fade {
-  animation: gentle-fade 0.3s ease-out;
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-smooth-slide {
-  animation: smooth-slide 0.3s ease-out;
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* Large, accessible interactive elements */
-.big-touch-target {
-  min-height: 44px; /* Minimum touch target size */
-  min-width: 44px;
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--accent-emerald) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--accent-emerald) / 0.6);
+  }
 }
 
-/* Clear hover states for all ages */
-.hover-gentle:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-medium);
-  transition: all 0.2s ease;
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.8;
+  }
 }
 
-/* Study-friendly card styling */
-.study-card {
-  background: hsl(var(--card));
+@keyframes trophy-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.animate-trophy-bounce {
+  animation: trophy-bounce 1s ease-in-out;
+}
+
+/* Butter-smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Professional hover effects */
+.hover-lift {
+  transition: var(--transition-butter);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elegant);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.hover-scale {
+  transition: var(--transition-smooth);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-bounce {
+  transition: var(--transition-bounce);
+}
+
+.hover-bounce:hover {
+  transform: scale(1.1);
+}
+
+/* Gamified button effects */
+.btn-gaming {
+  background: var(--gradient-gaming);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gaming::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: var(--transition-butter);
+}
+
+.btn-gaming:hover::before {
+  left: 100%;
+}
+
+/* Professional card effects */
+.card-professional {
+  transition: var(--transition-butter);
   border: 1px solid hsl(var(--border));
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
+  background: hsl(var(--card));
 }
 
-.study-card:hover {
-  box-shadow: var(--shadow-large);
-  transform: translateY(-2px);
+.card-professional:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-professional);
+  border-color: hsl(var(--accent-emerald) / 0.3);
+}
+
+/* Enhanced focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(var(--accent-emerald));
+  outline-offset: 2px;
+  border-radius: 4px;
 }
