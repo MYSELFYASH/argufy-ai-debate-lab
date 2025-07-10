@@ -22,10 +22,10 @@ const Index = () => {
               Sharpen your argumentation skills, engage in thoughtful discussions, and become a confident communicator.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-green-600 hover:bg-green-50 font-semibold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <Button asChild size="lg" className="bg-white text-green-600 hover:bg-green-50">
                 <Link to="/learn">Start Learning</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 font-semibold px-8 py-4 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105">
+              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
                 <Link to="/debate">Join Debate</Link>
               </Button>
             </div>
@@ -78,17 +78,17 @@ const Index = () => {
                 description: "Develop critical thinking, logical reasoning, and persuasive communication skills."
               }
             ].map((feature, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white to-green-50 dark:from-gray-800 dark:to-green-950">
+              <Card key={index} className="card-hover">
                 <CardHeader className="text-center pb-4">
-                  <div className="mx-auto w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                    <feature.icon className="h-8 w-8 text-white" />
+                  <div className="mx-auto w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <feature.icon className="h-6 w-6 text-primary-foreground" />
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <CardTitle className="text-xl font-semibold">
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 dark:text-gray-400 text-center leading-relaxed">
+                  <CardDescription className="text-center">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -107,7 +107,7 @@ const Index = () => {
           <p className="text-xl mb-8 text-green-50">
             Join thousands of learners who are already mastering the art of debate.
           </p>
-          <Button asChild size="lg" className="bg-white text-green-600 hover:bg-green-50 font-semibold px-12 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <Button asChild size="lg" className="bg-white text-green-600 hover:bg-green-50">
             <Link to="/learn">Get Started Today</Link>
           </Button>
         </div>

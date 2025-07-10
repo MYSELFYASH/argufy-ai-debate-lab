@@ -43,18 +43,18 @@ export function AppHeader() {
   const [isSignedIn, setIsSignedIn] = useState(false)
 
   return (
-    <header className="h-16 border-b border-border bg-background/95 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-50 animate-slide-up">
+    <header className="h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex items-center justify-between px-6 sticky top-0 z-50">
       <div className="flex items-center space-x-4">
-        <SidebarTrigger className="p-2 rounded-xl hover-lift hover-glow transition-all duration-300" />
+        <SidebarTrigger />
         
-        <div className="flex items-center space-x-3 animate-bounce-in">
-          <div className="bg-gradient-to-br from-blue-500 via-green-500 to-yellow-500 p-2.5 rounded-xl shadow-lg hover-bounce animate-sparkle">
-            <GeminiIcon className="h-6 w-6 text-white" />
+        <div className="flex items-center space-x-3">
+          <div className="bg-primary p-2 rounded-lg">
+            <GeminiIcon className="h-5 w-5 text-primary-foreground" />
           </div>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent-emerald bg-clip-text text-transparent">
+          <h1 className="text-2xl font-bold text-foreground">
             Vakya
           </h1>
-          <span className="text-xs bg-gradient-to-r from-accent-sapphire to-accent-emerald text-white px-3 py-1.5 rounded-full font-medium shadow-lg animate-glow-pulse">
+          <span className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded-full font-medium">
             AI Powered
           </span>
         </div>
@@ -65,30 +65,29 @@ export function AppHeader() {
           variant="ghost"
           size="icon"
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          className="rounded-full hover-scale hover-glow"
         >
           {theme === "light" ? 
-            <Moon className="h-5 w-5 text-primary animate-spin" style={{ animationDuration: '3s' }} /> : 
-            <Sun className="h-5 w-5 text-accent-gold animate-pulse" />
+            <Moon className="h-5 w-5" /> : 
+            <Sun className="h-5 w-5" />
           }
         </Button>
 
         {isSignedIn ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-10 w-10 rounded-full hover-lift">
-                <Avatar className="h-10 w-10 ring-2 ring-primary/20">
+              <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                <Avatar className="h-10 w-10">
                   <AvatarImage src="/placeholder.svg" alt="@user" />
-                  <AvatarFallback className="bg-gradient-to-br from-primary to-accent-emerald text-white font-bold">JD</AvatarFallback>
+                  <AvatarFallback className="bg-primary text-primary-foreground">JD</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-60 animate-slide-up card-professional" align="end" forceMount>
+            <DropdownMenuContent className="w-60" align="end" forceMount>
               <DropdownMenuLabel className="font-normal p-4">
                 <div className="flex flex-col space-y-2">
                   <div className="flex items-center space-x-3">
                     <Avatar className="h-10 w-10">
-                      <AvatarFallback className="bg-gradient-to-br from-primary to-accent-emerald text-white">JD</AvatarFallback>
+                      <AvatarFallback className="bg-primary text-primary-foreground">JD</AvatarFallback>
                     </Avatar>
                     <div>
                       <p className="text-sm font-semibold leading-none">John Doe</p>
@@ -103,38 +102,35 @@ export function AppHeader() {
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="hover-lift cursor-pointer">
-                <User className="mr-3 h-4 w-4 text-accent-emerald" />
+              <DropdownMenuItem>
+                <User className="mr-3 h-4 w-4" />
                 <span>Profile & Stats</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="hover-lift cursor-pointer">
-                <Settings className="mr-3 h-4 w-4 text-accent-sapphire" />
+              <DropdownMenuItem>
+                <Settings className="mr-3 h-4 w-4" />
                 <span>Account Settings</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="hover-lift cursor-pointer">
-                <Bell className="mr-3 h-4 w-4 text-accent-gold" />
+              <DropdownMenuItem>
+                <Bell className="mr-3 h-4 w-4" />
                 <span>Notifications</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="hover-lift cursor-pointer">
-                <Shield className="mr-3 h-4 w-4 text-accent-ruby" />
+              <DropdownMenuItem>
+                <Shield className="mr-3 h-4 w-4" />
                 <span>Privacy & Security</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="hover-lift cursor-pointer">
-                <HelpCircle className="mr-3 h-4 w-4 text-primary" />
+              <DropdownMenuItem>
+                <HelpCircle className="mr-3 h-4 w-4" />
                 <span>Help & Support</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => setIsSignedIn(false)} className="hover-lift cursor-pointer text-destructive">
+              <DropdownMenuItem onClick={() => setIsSignedIn(false)} className="text-destructive">
                 <LogOut className="mr-3 h-4 w-4" />
                 <span>Sign Out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          <Button
-            onClick={() => setIsSignedIn(!isSignedIn)}
-            className="btn-gaming hover-lift hover-glow px-6 py-2 rounded-full font-semibold shadow-lg"
-          >
+          <Button onClick={() => setIsSignedIn(!isSignedIn)}>
             <User className="h-4 w-4 mr-2" />
             Get Started
           </Button>

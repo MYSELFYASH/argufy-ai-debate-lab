@@ -119,22 +119,19 @@ export function ChatAssistant() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 animate-bounce-in">
-      <Card className={`w-80 shadow-2xl card-professional transition-all duration-500 hover-glow ${isMinimized ? 'h-16' : 'h-96'} border-primary/20`}>
-        <CardHeader className="flex flex-row items-center justify-between p-4 pb-2 bg-gradient-to-r from-primary/5 to-accent-emerald/5">
+    <div className="fixed bottom-6 right-6 z-50">
+      <Card className={`w-80 transition-all ${isMinimized ? 'h-16' : 'h-96'}`}>
+        <CardHeader className="flex flex-row items-center justify-between p-4 pb-2">
           <CardTitle className="text-lg flex items-center space-x-3">
-            <div className="relative">
-              <div className="text-2xl animate-bounce">🤖</div>
-              <div className="absolute -top-1 -right-1 h-3 w-3 bg-accent-emerald rounded-full animate-ping"></div>
-            </div>
-            <span className="bg-gradient-to-r from-primary to-accent-emerald bg-clip-text text-transparent font-bold">Vakya AI</span>
-            <span className="text-xs bg-gradient-to-r from-accent-sapphire to-accent-emerald text-white px-3 py-1 rounded-full font-medium animate-glow-pulse">GPT-4</span>
+            <div className="text-2xl">🤖</div>
+            <span className="font-bold">Vakya AI</span>
+            <span className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded-full">GPT-4</span>
           </CardTitle>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setIsMinimized(!isMinimized)}
-            className="h-8 w-8 hover-bounce rounded-full"
+            className="h-8 w-8"
           >
             {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
           </Button>
@@ -153,16 +150,16 @@ export function ChatAssistant() {
                   >
                     <Avatar className="h-6 w-6">
                       <AvatarFallback className={`${
-                        message.sender === 'user' ? 'bg-blue-500' : 'bg-green-500'
-                      } text-white text-xs`}>
+                        message.sender === 'user' ? 'bg-primary' : 'bg-secondary'
+                      } text-primary-foreground text-xs`}>
                         {message.sender === 'user' ? <User className="h-3 w-3" /> : <Bot className="h-3 w-3" />}
                       </AvatarFallback>
                     </Avatar>
                     <div
                       className={`max-w-[80%] p-2 rounded-lg text-sm ${
                         message.sender === 'user'
-                          ? 'bg-blue-500 text-white ml-auto'
-                          : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100'
+                          ? 'bg-primary text-primary-foreground ml-auto'
+                          : 'bg-muted text-muted-foreground'
                       }`}
                     >
                       {message.content}
@@ -172,15 +169,15 @@ export function ChatAssistant() {
                 {isLoading && (
                   <div className="flex items-start space-x-2">
                     <Avatar className="h-6 w-6">
-                      <AvatarFallback className="bg-green-500 text-white text-xs">
+                      <AvatarFallback className="bg-secondary text-primary-foreground text-xs">
                         <Bot className="h-3 w-3" />
                       </AvatarFallback>
                     </Avatar>
-                    <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg">
+                    <div className="bg-muted p-2 rounded-lg">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 bg-muted-foreground rounded-full animate-pulse"></div>
+                        <div className="w-2 h-2 bg-muted-foreground rounded-full animate-pulse"></div>
+                        <div className="w-2 h-2 bg-muted-foreground rounded-full animate-pulse"></div>
                       </div>
                     </div>
                   </div>
@@ -201,8 +198,6 @@ export function ChatAssistant() {
                   onClick={sendMessage}
                   disabled={isLoading || !inputValue.trim()}
                   size="icon"
-                  variant="gaming"
-                  className="hover-bounce animate-glow-pulse"
                 >
                   <Send className="h-4 w-4" />
                 </Button>
