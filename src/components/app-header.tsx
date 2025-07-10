@@ -45,18 +45,16 @@ export function AppHeader() {
   return (
     <header className="h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex items-center justify-between px-6 sticky top-0 z-50">
       <div className="flex items-center space-x-4">
-        <SidebarTrigger />
+        <SidebarTrigger className="big-touch-target" />
         
         <div className="flex items-center space-x-3">
-          <div className="bg-primary p-2 rounded-lg">
-            <GeminiIcon className="h-5 w-5 text-primary-foreground" />
+          <div className="bg-primary/10 p-2 rounded-xl">
+            <GeminiIcon className="h-6 w-6 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">
-            Vakya
-          </h1>
-          <span className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded-full font-medium">
-            AI Powered
-          </span>
+          <div>
+            <h1 className="text-xl font-bold font-reading">Vakya</h1>
+            <span className="text-xs text-muted-foreground">Study Platform</span>
+          </div>
         </div>
       </div>
 
@@ -65,6 +63,8 @@ export function AppHeader() {
           variant="ghost"
           size="icon"
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          className="big-touch-target"
+          aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
         >
           {theme === "light" ? 
             <Moon className="h-5 w-5" /> : 
@@ -130,7 +130,7 @@ export function AppHeader() {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          <Button onClick={() => setIsSignedIn(!isSignedIn)}>
+          <Button onClick={() => setIsSignedIn(!isSignedIn)} className="big-touch-target">
             <User className="h-4 w-4 mr-2" />
             Get Started
           </Button>

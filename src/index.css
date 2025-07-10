@@ -9,83 +9,99 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Study-focused color scheme - Light Mode */
+    --background: 248 250 252%;  /* Soft white */
+    --foreground: 15 23 42%;     /* Dark slate for text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 255 255 255%;        /* Pure white cards */
+    --card-foreground: 15 23 42%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 255 255 255%;
+    --popover-foreground: 15 23 42%;
 
-    --primary: 142 71% 45%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary: Academic blue - trustworthy and focused */
+    --primary: 219 78% 58%;      /* Blue for learning */
+    --primary-foreground: 255 255 255%;
 
-    --secondary: 142 20% 96%;
-    --secondary-foreground: 142 71% 25%;
+    /* Secondary: Soft study blue */
+    --secondary: 239 246 255%;   /* Very light blue */
+    --secondary-foreground: 30 41 59%;
 
-    --muted: 142 20% 96%;
-    --muted-foreground: 142 30% 50%;
+    /* Muted: Light academic gray */
+    --muted: 241 245 249%;       /* Light gray background */
+    --muted-foreground: 100 116 139%;
 
-    --accent: 142 20% 96%;
-    --accent-foreground: 142 71% 25%;
+    /* Accent: Study green for success */
+    --accent: 34 197 94%;        /* Success green */
+    --accent-foreground: 255 255 255%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive: Warning red */
+    --destructive: 239 68% 68%;
+    --destructive-foreground: 255 255 255%;
 
-    --border: 142 20% 85%;
-    --input: 142 20% 85%;
-    --ring: 142 71% 45%;
+    /* Borders and inputs */
+    --border: 226 232 240%;      /* Light border */
+    --input: 226 232 240%;
+    --ring: 219 78% 58%;         /* Focus ring matches primary */
 
-    --radius: 0.5rem;
+    --radius: 8px;               /* Friendly rounded corners */
 
-    --sidebar-background: 142 20% 98%;
-    --sidebar-foreground: 142 30% 20%;
-    --sidebar-primary: 142 71% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 142 20% 92%;
-    --sidebar-accent-foreground: 142 71% 15%;
-    --sidebar-border: 142 20% 85%;
-    --sidebar-ring: 142 71% 45%;
+    /* Sidebar colors */
+    --sidebar-background: 248 250 252%;
+    --sidebar-foreground: 51 65 85%;
+    --sidebar-primary: 219 78% 58%;
+    --sidebar-primary-foreground: 255 255 255%;
+    --sidebar-accent: 239 246 255%;
+    --sidebar-accent-foreground: 30 41 59%;
+    --sidebar-border: 226 232 240%;
+    --sidebar-ring: 219 78% 58%;
   }
 
   .dark {
-    --background: 142 50% 3%;
-    --foreground: 142 20% 95%;
+    /* Study-focused dark mode - easier on eyes for night study */
+    --background: 15 23 42%;     /* Dark slate background */
+    --foreground: 248 250 252%;  /* Light text */
 
-    --card: 142 40% 5%;
-    --card-foreground: 142 20% 95%;
+    --card: 30 41 59%;           /* Darker cards */
+    --card-foreground: 248 250 252%;
 
-    --popover: 142 40% 5%;
-    --popover-foreground: 142 20% 95%;
+    --popover: 30 41 59%;
+    --popover-foreground: 248 250 252%;
 
-    --primary: 142 71% 55%;
-    --primary-foreground: 142 50% 3%;
+    /* Primary: Softer blue for dark mode */
+    --primary: 147 197 253%;     /* Light blue */
+    --primary-foreground: 15 23 42%;
 
-    --secondary: 142 30% 10%;
-    --secondary-foreground: 142 20% 95%;
+    /* Secondary: Dark study surface */
+    --secondary: 51 65 85%;      /* Medium slate */
+    --secondary-foreground: 248 250 252%;
 
-    --muted: 142 30% 10%;
-    --muted-foreground: 142 20% 60%;
+    /* Muted: Dark muted surfaces */
+    --muted: 51 65 85%;
+    --muted-foreground: 148 163 184%;
 
-    --accent: 142 30% 10%;
-    --accent-foreground: 142 20% 95%;
+    /* Accent: Soft green for dark mode */
+    --accent: 34 197 94%;
+    --accent-foreground: 15 23 42%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive */
+    --destructive: 248 113 113%;
+    --destructive-foreground: 15 23 42%;
 
-    --border: 142 30% 15%;
-    --input: 142 30% 15%;
-    --ring: 142 71% 55%;
+    /* Borders */
+    --border: 51 65 85%;
+    --input: 51 65 85%;
+    --ring: 147 197 253%;
 
-    --sidebar-background: 142 40% 5%;
-    --sidebar-foreground: 142 20% 85%;
-    --sidebar-primary: 142 71% 55%;
-    --sidebar-primary-foreground: 142 50% 3%;
-    --sidebar-accent: 142 30% 10%;
-    --sidebar-accent-foreground: 142 20% 85%;
-    --sidebar-border: 142 30% 15%;
-    --sidebar-ring: 142 71% 55%;
+    /* Sidebar dark */
+    --sidebar-background: 30 41 59%;
+    --sidebar-foreground: 203 213 225%;
+    --sidebar-primary: 147 197 253%;
+    --sidebar-primary-foreground: 15 23 42%;
+    --sidebar-accent: 51 65 85%;
+    --sidebar-accent-foreground: 203 213 225%;
+    --sidebar-border: 51 65 85%;
+    --sidebar-ring: 147 197 253%;
   }
 }
 
@@ -95,29 +111,36 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    font-size: 16px; /* Base readable size for all ages */
+    line-height: 1.6; /* Better readability */
   }
 }
 
-/* Simple, functional design system */
+/* Study-focused design system */
 :root {
-  /* Standard shadows */
-  --shadow-sm: 0 1px 2px 0 hsl(var(--foreground) / 0.05);
-  --shadow-md: 0 4px 6px -1px hsl(var(--foreground) / 0.1);
-  --shadow-lg: 0 10px 15px -3px hsl(var(--foreground) / 0.1);
+  /* Academic color palette */
+  --study-blue: 219 78% 58%;     /* Primary learning blue */
+  --study-green: 34 197 94%;     /* Success/progress green */
+  --study-orange: 251 146 60%;   /* Warning/attention orange */
+  --study-purple: 139 92% 62%;   /* Creative/advanced purple */
+  
+  /* Gentle shadows for comfort */
+  --shadow-soft: 0 1px 3px 0 hsl(0 0% 0% / 0.1);
+  --shadow-medium: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+  --shadow-large: 0 10px 15px -3px hsl(0 0% 0% / 0.1);
 }
 
-/* Simple fade-in animation */
-@keyframes fade-in {
+/* Simple, accessible animations */
+@keyframes gentle-fade {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* Standard slide animation */
-@keyframes slide-up {
+@keyframes smooth-slide {
   from { 
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to { 
     opacity: 1;
@@ -125,31 +148,38 @@ All colors MUST be HSL.
   }
 }
 
-/* Animation classes */
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
+/* Animation classes for accessibility */
+.animate-gentle-fade {
+  animation: gentle-fade 0.3s ease-out;
 }
 
-.animate-slide-up {
-  animation: slide-up 0.3s ease-out;
+.animate-smooth-slide {
+  animation: smooth-slide 0.3s ease-out;
 }
 
-/* Standard hover effects */
-.hover-lift:hover {
+/* Large, accessible interactive elements */
+.big-touch-target {
+  min-height: 44px; /* Minimum touch target size */
+  min-width: 44px;
+}
+
+/* Clear hover states for all ages */
+.hover-gentle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+  transition: all 0.2s ease;
+}
+
+/* Study-friendly card styling */
+.study-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.study-card:hover {
+  box-shadow: var(--shadow-large);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.hover-scale:hover {
-  transform: scale(1.02);
-}
-
-/* Standard card styling */
-.card-hover {
-  transition: all 0.2s ease-in-out;
-}
-
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
 }
